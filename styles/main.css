@@ -1,0 +1,30 @@
+h1 {
+  text-align: center
+}
+
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.meta {
+  text-align: center;
+  font-family: Montserrat;
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 38px;
+}
+
+.upcoming-or-previous {
+  background: #BD242B;
+  color: white;
+  padding: 1em 3em;
+  display: inline-block;
+  font-weight: normal;
+  margin-bottom: 0;
+}
+
+.content {
+  background: hsla(357, 81%, 64%, 0.15);
+  padding: 1em 2em;
+}
