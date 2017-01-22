@@ -16,20 +16,20 @@ var getMeetups = function() {
 	//console.log(call);
 }
 
-var updateDOM = function() {
-	var events = (call.responseJSON.data);
+var updateDOM = function(responseJSON) {
+	var events = responseJSON.data;
 	//console.log(events);
 
 	//Checks if no meetups were returned
 	if (events.length != 0) {
 		if (events[0].status == "past") {
-			document.getElementById("latest-status").innerHTML = ("Previous");
+			document.getElementById("latest-status").innerHTML = "Previous";
 		} else {
-			document.getElementById("latest-status").innerHTML = ("Upcoming");
+			document.getElementById("latest-status").innerHTML = "Upcoming";
 		}
 
-		document.getElementById("latest-title").innerHTML = (events[0].name);
-		document.getElementById("latest-desc").innerHTML = (events[0].description);
+		document.getElementById("latest-title").innerHTML = events[0].name;
+		document.getElementById("latest-desc").innerHTML = events[0].description;
 	} else {
 		//There's no reason for this to ever happen. Unless group is deleted, should is there any point of this check?
 		console.log("ERROR: No meetups returned from request.");   
