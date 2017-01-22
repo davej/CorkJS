@@ -28,3 +28,7 @@ h1 {
   background: hsla(357, 81%, 64%, 0.15);
   padding: 1em 2em;
 }
+
+.upcoming-or-previous{
+  text-transform: capitalize;
+}
