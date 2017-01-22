@@ -2,49 +2,39 @@ var helloCork = function() {
   	console.log('Hello Cork');
 };
 
-var signedUrlUpcoming = "https://api.meetup.com/cork-javascript-meetup/events?photo-host=public&page=20&sig_id=210143296&sig=d07ac4460173bc86aa05e0c5b65acd79b2b8ae1b";
-var signedUrlPast = "https://api.meetup.com/cork-javascript-meetup/events?photo-host=public&page=20&sig_id=210143296&status=past&sig=052868f6f4d1f5a525fa6ca28a74e771165ad4ea";
+var signedUrl = "https://api.meetup.com/cork-javascript-meetup/events?desc=true&photo-host=public&page=20&sig_id=210143296&status=upcoming%2Cpast&sig=0607ea8f24a049a251ec629255d393a89c8ece7f";
+var call;
 
-var getUpcomingEvents = function() {
-	var call = $.ajax({
+var getMeetups = function() {
+	call = $.ajax({
 		type: "GET",
 		dataType: "jsonp",
-		url: signedUrlUpcoming
+		url: signedUrl,
+
+		success: updateDOM
 	});
 	//console.log(call);
-	updateDOM(call, true);
-	return call;
 }
 
-var getPastEvents = function() {
-	var call = $.ajax({
-		type: "GET",
-		dataType: "jsonp",
-		url: signedUrlPast 
-	});
-	//console.log(call);
-	updateDOM(call, false);
-}
+var updateDOM = function() {
+	var events = (call.responseJSON.data);
+	//console.log(events);
 
-var updateDOM = function(call, upcoming) {
-	//When ajax call is complete
-	$(document).ajaxStop(function() {
-		var events = (call.responseJSON.data);
-		//console.log(events);
-		if (events.length != 0) {
-			var index = 0;
-			if (!upcoming) {
-				index = events.length - 1;
-				$("#latest-status").text("Previous");
-			} else {
-				$("#latest-status").text("Upcoming");
-			}
-			$("#latest-title").text(events[index].name);
-			$("#latest-desc").replaceWith(events[index].description);
+	//Checks if no meetups were returned
+	if (events.length != 0) {
+		if (events[0].status == "past") {
+			document.getElementById("latest-status").innerHTML = ("Previous");
+		} else {
+			document.getElementById("latest-status").innerHTML = ("Upcoming");
 		}
-	});
+
+		document.getElementById("latest-title").innerHTML = (events[0].name);
+		document.getElementById("latest-desc").innerHTML = (events[0].description);
+	} else {
+		//There's no reason for this to ever happen. Unless group is deleted, should is there any point of this check?
+		console.log("ERROR: No meetups returned from request.");   
+	}
 }
 
 helloCork();
-getPastEvents();
-getUpcomingEvents();
+getMeetups();
