@@ -22,7 +22,7 @@ var getMeetups = function() {
 
 var updateDOM = function(responseJSON) {
   var events = responseJSON.data;
-  //console.log(events);
+  console.log(events);
   
   //Checks if no meetups were returned
   if (events.length != 0) {
@@ -40,6 +40,10 @@ var updateDOM = function(responseJSON) {
 	var date = new Date(events[0].time);
 	document.getElementById("latest-date").innerHTML = (days[date.getDay() -1] + " " + date.getDate() + " " + months[date.getMonth()] + ", " + date.getFullYear() + " - " 
 	  + date.getHours() + ":" + date.getMinutes() );
+
+  //Add link to title
+  var link = events[0].link;
+  document.getElementById("latest-link").href = link;
   } else {
    //There's no reason for this to ever happen. Unless group is deleted, is there any point of this check?
   console.log("ERROR: No meetups returned from request.");   
