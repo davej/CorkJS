@@ -2,19 +2,22 @@ var helloCork = function() {
   	console.log('Hello Cork');
 };
 
-var signedUrl = "https://api.meetup.com/cork-javascript-meetup/events?desc=true&photo-host=public&page=20&sig_id=210143296&status=upcoming%2Cpast&sig=0607ea8f24a049a251ec629255d393a89c8ece7f";
+var signedUrl = "https://api.meetup.com/cork-javascript-meetup/events?desc=true&photo-host=public&page=20&sig_id=210143296&callback=updateDOM&status=past%2Cupcoming&sig=4a36a805aac0c8de4199cb3008a95f9fa292ca9b";
 var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
 var days = ['Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'];
 
-var getMeetups = function() {
-	var call = $.ajax({
-		type: "GET",
-		dataType: "jsonp",
-		url: signedUrl,
+var jsonp = function(url) {
+      var head = document.head;
+      var script = document.createElement("script");
 
-		success: updateDOM
-	});
-	//console.log(call);
+      script.setAttribute("src", url);
+      head.appendChild(script);
+      head.removeChild(script);
+}
+
+var getMeetups = function() {
+	jsonp(signedUrl);
+	console.log(signedUrl);
 }
 
 var updateDOM = function(responseJSON) {
