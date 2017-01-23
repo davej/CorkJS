@@ -17,7 +17,7 @@ var jsonp = function(url) {
 
 var getMeetups = function() {
 	jsonp(signedUrl);
-	console.log(signedUrl);
+	//console.log(signedUrl);
 }
 
 var updateDOM = function(responseJSON) {
