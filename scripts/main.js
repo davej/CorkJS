@@ -22,7 +22,7 @@ var getMeetups = function() {
 
 var updateDOM = function(responseJSON) {
   var events = responseJSON.data;
-  console.log(events);
+  //console.log(events);
   
   //Checks if no meetups were returned
   if (events.length != 0) {
@@ -50,7 +50,7 @@ var updateDOM = function(responseJSON) {
     //Replace location data
     var location = latestEvent.venue;
     document.getElementById("latest-location").innerHTML = (location.name + "<br>" + location.address_1 + 
-      " - [ <a href='http://maps.google.com/?q=" + location.lat  + ',' + location.lon + "' target='_blank' " +">Directions</a> ]") ;
+      " - [ <a href='http://maps.google.com/?q=" + location.name + "' target='_blank' " +">Directions</a> ]") ;
   } else {
    //There's no reason for this to ever happen. Unless group is deleted, is there any point of this check?
   console.log("ERROR: No meetups returned from request.");   
