@@ -1,6 +1,6 @@
-var signedUrl = 'https://api.meetup.com/cork-javascript-meetup/events?\
-desc=true&photo-host=public&page=20&sig_id=210143296&callback=updateDOM&\
-status=past%2Cupcoming&sig=4a36a805aac0c8de4199cb3008a95f9fa292ca9b';
+var signedUrl = 'https://api.meetup.com/cork-javascript-meetup/events?' +
+  'desc=true&photo-host=public&page=20&sig_id=210143296&callback=updateDOM&' +
+  'status=past%2Cupcoming&sig=4a36a805aac0c8de4199cb3008a95f9fa292ca9b';
 var months = [
   'Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept',
   'Oct', 'Nov', 'Dec'
