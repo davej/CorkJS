@@ -17,43 +17,50 @@ var jsonp = function(url) {
 
 var getMeetups = function() {
   jsonp(signedUrl);
-  //console.log(signedUrl);
 }
 
 var updateDOM = function(responseJSON) {
   var events = responseJSON.data;
-  //console.log(events);
-  
-  //Checks if no meetups were returned
-  if (events.length != 0) {
-    var latestEvent = events[0];
 
-      //Replace banner text
-  	if (latestEvent.status == "past") {
-  	  document.getElementById("latest-status").innerHTML = "Previous";
-  	} else {
-  	  document.getElementById("latest-status").innerHTML = "Upcoming";
-  	}
-  	//Replace title, description
-  	document.getElementById("latest-title").innerHTML = latestEvent.name;
-  	document.getElementById("latest-desc").innerHTML = latestEvent.description;
-  	//Replace date text
-  	var date = new Date(latestEvent.time);
-  	document.getElementById("latest-date").innerHTML = (days[date.getDay() -1] + " " + date.getDate() + " " + months[date.getMonth()] + ", " + date.getFullYear() + " - " 
-  	  + date.getHours() + ":" + date.getMinutes() );
+  // Checks if no meetups were returned
+  if (!(events && events.length > 0)) {
+    console.log("ERROR: No meetups returned from request.");
+    return;
+  };
 
-    //Add link to title
-    var link = latestEvent.link;
-    document.getElementById("latest-link").href = link;
+  var latestEvent = events[0];
 
-    //Replace location data
-    var location = latestEvent.venue;
-    document.getElementById("latest-location").innerHTML = (location.name + "<br>" + location.address_1 + 
-      " - [ <a href='http://maps.google.com/?q=" + location.name + " 'target='_blank' " + ">Directions</a> ]") ;
+  // Replace banner text
+  if (latestEvent.status == "past") {
+    document.getElementById("latest-status").innerHTML = "Previous";
   } else {
-   //There's no reason for this to ever happen. Unless group is deleted, is there any point of this check?
-  console.log("ERROR: No meetups returned from request.");   
+    document.getElementById("latest-status").innerHTML = "Upcoming";
   }
+  // Replace title, description
+  document.getElementById("latest-title").innerHTML = latestEvent.name;
+  document.getElementById("latest-desc").innerHTML = latestEvent.description;
+  // Replace date text
+  var date = new Date(latestEvent.time);
+
+  document.getElementById("latest-date").innerHTML =
+    (
+      days[date.getDay() -1] + " " + date.getDate() + " " +
+      months[date.getMonth()] + ", " + date.getFullYear() + " - " +
+      date.getHours() + ":" + date.getMinutes()
+    );
+
+  // Add link to title
+  var link = latestEvent.link;
+  document.getElementById("latest-link").href = link;
+
+  // Replace location data
+  var location = latestEvent.venue;
+  document.getElementById("latest-location").innerHTML =
+    (
+      location.name + "<br>" + location.address_1 +
+      " - [ <a href='http://maps.google.com/?q=" + location.name +
+      " 'target='_blank' " + ">Directions</a> ]"
+    );
 }
 
 helloCork();
