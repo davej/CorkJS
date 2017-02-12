@@ -28,3 +28,11 @@ h1 {
   background: hsla(357, 81%, 64%, 0.15);
   padding: 1em 2em;
 }
+
+a {
+  color: #BD242B;
+}
+
+.content a {
+  text-decoration: none;
+}

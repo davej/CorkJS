@@ -26,20 +26,30 @@ var updateDOM = function(responseJSON) {
   
   //Checks if no meetups were returned
   if (events.length != 0) {
+    var latestEvent = events[0];
 
-    //Replace banner text
-	if (events[0].status == "past") {
-	  document.getElementById("latest-status").innerHTML = "Previous";
-	} else {
-	  document.getElementById("latest-status").innerHTML = "Upcoming";
-	}
-	//Replace title, description
-	document.getElementById("latest-title").innerHTML = events[0].name;
-	document.getElementById("latest-desc").innerHTML = events[0].description;
-	//Replace date text
-	var date = new Date(events[0].time);
-	document.getElementById("latest-date").innerHTML = (days[date.getDay() -1] + " " + date.getDate() + " " + months[date.getMonth()] + ", " + date.getFullYear() + " - " 
-	  + date.getHours() + ":" + date.getMinutes() );
+      //Replace banner text
+  	if (latestEvent.status == "past") {
+  	  document.getElementById("latest-status").innerHTML = "Previous";
+  	} else {
+  	  document.getElementById("latest-status").innerHTML = "Upcoming";
+  	}
+  	//Replace title, description
+  	document.getElementById("latest-title").innerHTML = latestEvent.name;
+  	document.getElementById("latest-desc").innerHTML = latestEvent.description;
+  	//Replace date text
+  	var date = new Date(latestEvent.time);
+  	document.getElementById("latest-date").innerHTML = (days[date.getDay() -1] + " " + date.getDate() + " " + months[date.getMonth()] + ", " + date.getFullYear() + " - " 
+  	  + date.getHours() + ":" + date.getMinutes() );
+
+    //Add link to title
+    var link = latestEvent.link;
+    document.getElementById("latest-link").href = link;
+
+    //Replace location data
+    var location = latestEvent.venue;
+    document.getElementById("latest-location").innerHTML = (location.name + "<br>" + location.address_1 + 
+      " - [ <a href='http://maps.google.com/?q=" + location.name + " 'target='_blank' " + ">Directions</a> ]") ;
   } else {
    //There's no reason for this to ever happen. Unless group is deleted, is there any point of this check?
   console.log("ERROR: No meetups returned from request.");   
