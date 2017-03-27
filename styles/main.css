@@ -1,5 +1,11 @@
+/* ###################  GENERAL ################# */
+
 h1 {
   text-align: center
+}
+
+a {
+  color: #BD242B;
 }
 
 .container {
@@ -29,10 +35,40 @@ h1 {
   padding: 1em 2em;
 }
 
-a {
-  color: #BD242B;
-}
 
 .content a {
   text-decoration: none;
+}
+
+
+/* ###################  NAV BAR ################# */
+
+#primaryNavbar ul {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.2em;
+  font-family: Montserrat;
+}
+
+#primaryNavbar ul li {
+  display:inline;
+  margin: 0px 10px 0px;
+}
+
+#primaryNavbar ul li a{
+  text-decoration: none;
+}
+
+#primaryNavbar ul li a:hover {
+  color: #c33940;
+}
+
+/* ###################  FOOTER ################# */
+
+footer {
+  background-color: #333333;
+  font-size: 1em;
+  margin-top: 15px;
+  color: #fff;
+  padding: 10px 10px 10px 10px;
 }
