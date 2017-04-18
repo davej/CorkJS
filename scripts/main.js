@@ -62,7 +62,6 @@ var updateDOM = function(responseJSON) {
 
   // Add embed map
   var map = document.getElementById('map');
-
   map.src = 'https://www.google.com/maps/embed/v1/place?' +
     'key=AIzaSyC9JxGGhS0Xr1429ae62E3MEfk227kqDIA&q=' +
     location.address_1;
