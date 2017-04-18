@@ -2,6 +2,37 @@ h1 {
   text-align: center
 }
 
+h4 {
+  margin: 0;
+}
+
+a {
+  color: #BD242B;
+}
+
+#latest-status, #rsvp-count {
+  background: #BD242B;
+  color: white;
+  padding: 1em 3em;
+  display: inline-block;
+  font-weight: normal;
+  margin-bottom: 0;
+}
+
+#rsvp-count {
+  padding: 0.5em 1.5em;
+  float: right;
+}
+
+#location {
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+.content a {
+  text-decoration: none;
+}
+
 .container {
   max-width: 760px;
   margin: 0 auto;
@@ -15,24 +46,7 @@ h1 {
   line-height: 38px;
 }
 
-.upcoming-or-previous {
-  background: #BD242B;
-  color: white;
-  padding: 1em 3em;
-  display: inline-block;
-  font-weight: normal;
-  margin-bottom: 0;
-}
-
 .content {
   background: hsla(357, 81%, 64%, 0.15);
   padding: 1em 2em;
-}
-
-a {
-  color: #BD242B;
-}
-
-.content a {
-  text-decoration: none;
 }
