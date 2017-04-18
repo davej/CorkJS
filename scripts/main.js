@@ -33,12 +33,13 @@ var updateDOM = function(responseJSON) {
   } else {
     document.getElementById('latest-status').innerHTML = 'Upcoming';
   }
+  
   // Replace title, description
   document.getElementById('latest-title').innerHTML = latestEvent.name;
   document.getElementById('latest-desc').innerHTML = latestEvent.description;
+  
   // Replace date text
   var date = new Date(latestEvent.time);
-
   document.getElementById('latest-date').innerHTML =
     (
       days[date.getDay() -1] + ' ' + date.getDate() + ' ' +
