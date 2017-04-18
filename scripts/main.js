@@ -7,17 +7,13 @@ var months = [
 ];
 var days = ['Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'];
 
-var jsonp = function(url) {
+var getMeetups = function(url) {
   var head = document.head;
   var script = document.createElement('script');
 
   script.setAttribute('src', url);
   head.appendChild(script);
   head.removeChild(script);
-}
-
-var getMeetups = function() {
-  jsonp(signedUrl);
 }
 
 var updateDOM = function(responseJSON) {
@@ -37,12 +33,13 @@ var updateDOM = function(responseJSON) {
   } else {
     document.getElementById('latest-status').innerHTML = 'Upcoming';
   }
+  
   // Replace title, description
   document.getElementById('latest-title').innerHTML = latestEvent.name;
   document.getElementById('latest-desc').innerHTML = latestEvent.description;
+  
   // Replace date text
   var date = new Date(latestEvent.time);
-
   document.getElementById('latest-date').innerHTML =
     (
       days[date.getDay() -1] + ' ' + date.getDate() + ' ' +
@@ -62,6 +59,21 @@ var updateDOM = function(responseJSON) {
       ' - [ <a href="http://maps.google.com/?q=' + location.name +
       '" target="_blank">Directions</a> ]'
     );
+
+  // Add embed map
+  var map = document.getElementById('map');
+  map.src = 'https://www.google.com/maps/embed/v1/place?' +
+    'key=AIzaSyC9JxGGhS0Xr1429ae62E3MEfk227kqDIA&q=' +
+    location.address_1;
+
+  // Add attendance count
+  if (latestEvent.status == 'past') {
+    document.getElementById("rsvp-count").innerHTML = 'Attended: ' +
+      latestEvent.yes_rsvp_count;
+  } else {
+    document.getElementById("rsvp-count").innerHTML = 'Attending: ' +
+      latestEvent.yes_rsvp_count;
+  }
 }
 
-getMeetups();
+getMeetups(signedUrl);
