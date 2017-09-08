@@ -38,6 +38,27 @@ a {
   margin: 0 auto;
 }
 
+#mainNavbar {
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+#mainNavbar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#mainNavbar ul li{
+    margin: 0px 20px 0px 20px;
+    display: inline;
+}
+
+#mainNavbar ul li a{
+  text-decoration: none;
+}
+
+
 .meta {
   text-align: center;
   font-family: Montserrat;
@@ -53,7 +74,7 @@ a {
 
 
 header, footer {
-  display: none;
+  /* display: none; */
 }
 
 #user-projects {
