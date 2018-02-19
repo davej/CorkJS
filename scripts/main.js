@@ -7,7 +7,7 @@ var months = [
 ];
 var days = ['Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'];
 
-var getMeetups = function(url) {
+var getMeetups = function (url) {
   var head = document.head;
   var script = document.createElement('script');
 
@@ -16,7 +16,7 @@ var getMeetups = function(url) {
   head.removeChild(script);
 }
 
-var updateDOM = function(responseJSON) {
+var updateDOM = function (responseJSON) {
   var events = responseJSON.data;
 
   // Checks if no meetups were returned
@@ -24,35 +24,34 @@ var updateDOM = function(responseJSON) {
     console.log('ERROR: No meetups returned from request.');
     return;
   };
-
-  var latestEvent = events[0];
+  let nextEvent = getNextEvent();
 
   // Replace banner text
-  if (latestEvent.status == 'past') {
+  if (nextEvent.status == 'past') {
     document.getElementById('latest-status').innerHTML = 'Previous';
   } else {
     document.getElementById('latest-status').innerHTML = 'Upcoming';
   }
-  
+
   // Replace title, description
-  document.getElementById('latest-title').innerHTML = latestEvent.name;
-  document.getElementById('latest-desc').innerHTML = latestEvent.description;
-  
+  document.getElementById('latest-title').innerHTML = nextEvent.name;
+  document.getElementById('latest-desc').innerHTML = nextEvent.description;
+
   // Replace date text
-  var date = new Date(latestEvent.time);
+  var date = new Date(nextEvent.time);
   document.getElementById('latest-date').innerHTML =
     (
-      days[date.getDay() -1] + ' ' + date.getDate() + ' ' +
+      days[date.getDay() - 1] + ' ' + date.getDate() + ' ' +
       months[date.getMonth()] + ', ' + date.getFullYear() + ' - ' +
       date.getHours() + ':' + date.getMinutes()
     );
 
   // Add link to title
-  var link = latestEvent.link;
+  var link = nextEvent.link;
   document.getElementById('latest-link').href = link;
 
   // Replace location data
-  var location = latestEvent.venue;
+  var location = nextEvent.venue;
   document.getElementById('latest-location').innerHTML =
     (
       location.name + '<br>' + location.address_1 +
@@ -67,12 +66,20 @@ var updateDOM = function(responseJSON) {
     location.name + ', Cork, Ireland' + '&zoom=17';
 
   // Add attendance count
-  if (latestEvent.status == 'past') {
+  if (nextEvent.status == 'past') {
     document.getElementById("rsvp-count").innerHTML = 'Attended: ' +
-      latestEvent.yes_rsvp_count;
+      nextEvent.yes_rsvp_count;
   } else {
     document.getElementById("rsvp-count").innerHTML = 'Attending: ' +
-      latestEvent.yes_rsvp_count;
+      nextEvent.yes_rsvp_count;
+  }
+
+  function getNextEvent() {
+    for (let event = 0; event < events.length; event++) {
+      if (events[event].status == "past") {
+        return events[event - 1]
+      }
+    }
   }
 }
 
