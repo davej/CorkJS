@@ -1,58 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>CorkJS</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
-    <link rel="stylesheet" href="styles/normalize.css">
-    <link rel="stylesheet" href="styles/main.css">
-    <link rel="icon" type="image/png" href="images/favicon.png">
-  </head>
-  <body>
-    <header>
-      <nav id="mainNavbar" class="container">
-        <ul>
-          <li><a href="projects.html">View Our Projects</a></li>
-          <!-- <li><a href="learning.html">Learning Resources</a></li> -->
-        </ul>
-      </nav>
-    </header>
-    <div class="container">
-      <h1><img src="./images/logo.svg"></h1>
-      <p class="meta">
-        Once a month (usually on a Tuesday) you'll find a bunch of Corkonians talking about JavaScript
-      </p>
 
-      <div class="latest-meetup">
-        <!-- Shows 'upcoming' if it's in the future or 'previous' if it's in the past -->
-        <h4 id="latest-status">Upcoming</h4>
-        <div class="content">
-          <h4 id="rsvp-count"></h4>
-          <a href="#" id="latest-link" target="_blank" ><h3 id="latest-title">Meetup title</h3></a>
-          <h4 id="latest-date">Meetup metadata date etc..</h4>
-          <h5 id="latest-location">Location of event</h5>
-          <p id="latest-desc">
-            Meetup content body goes here.<br><br>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </p>
-          <h4 id="location">Location</h4>
-          <iframe
-            id="map"
-            width="100%"
-            height="450"
-            frameborder="0" style="border:0"
-            allowfullscreen>
-          </iframe>
-        </div>
+<head>
+  <meta charset="utf-8">
+  <title>CorkJS</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+  <link rel="stylesheet" href="styles/normalize.css">
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="icon" type="image/png" href="images/favicon.png">
+</head>
+
+<body>
+  <header>
+    <nav id="mainNavbar" class="container">
+      <ul>
+        <li>
+          <a href="projects.html">View Our Projects</a>
+        </li>
+        <!-- <li><a href="learning.html">Learning Resources</a></li> -->
+      </ul>
+    </nav>
+  </header>
+  <div class="container">
+    <h1>
+      <img src="./images/logo.svg">
+    </h1>
+    <p class="meta">
+      Once a month (usually on a Tuesday) you'll find a bunch of Corkonians talking about JavaScript
+    </p>
+
+    <div class="latest-meetup">
+      <!-- Shows 'upcoming' if it's in the future or 'previous' if it's in the past -->
+      <h4 id="latest-status">Upcoming</h4>
+      <div class="content">
+        <h4 id="rsvp-count"></h4>
+        <a href="#" id="latest-link" target="_blank">
+          <h3 id="latest-title">Meetup title</h3>
+        </a>
+        <h4 id="latest-date">Meetup metadata date etc..</h4>
+        <h5 id="latest-location">Location of event</h5>
+        <p id="latest-desc">
+          Meetup content body goes here.
+          <br>
+          <br> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+        <h4 id="location">Location</h4>
+        <iframe id="map" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen>
+        </iframe>
       </div>
     </div>
-    <footer>
-       <div class="container">
-         <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione in maxime dicta? Cum excepturi aperiam ipsum ratione obcaecati culpa soluta adipisci voluptatem reprehenderit! Officia maiores, necessitatibus reprehenderit cupiditate. Eaque, ducimus.</p>-->
-       </div>
-    </footer>
-    <script src="scripts/main.js"></script>
-  </body>
+  </div>
+  <footer>
+    <div class="container">
+      <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione in maxime dicta? Cum excepturi aperiam ipsum ratione
+        obcaecati culpa soluta adipisci voluptatem reprehenderit! Officia maiores, necessitatibus reprehenderit cupiditate.
+        Eaque, ducimus.</p> -->
+    </div>
+  </footer>
+  <script src="scripts/main.js"></script>
+</body>
+
 </html>
