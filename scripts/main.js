@@ -14,7 +14,7 @@ var getMeetups = function (url) {
   script.setAttribute('src', url);
   head.appendChild(script);
   head.removeChild(script);
-}
+};
 
 var updateDOM = function (responseJSON) {
   var events = responseJSON.data;
@@ -23,8 +23,8 @@ var updateDOM = function (responseJSON) {
   if (!(events && events.length > 0)) {
     console.log('ERROR: No meetups returned from request.');
     return;
-  };
-  let nextEvent = getNextEvent();
+  }
+  var nextEvent = getNextEvent();
 
   // Replace banner text
   if (nextEvent.status == 'past') {
@@ -67,20 +67,20 @@ var updateDOM = function (responseJSON) {
 
   // Add attendance count
   if (nextEvent.status == 'past') {
-    document.getElementById("rsvp-count").innerHTML = 'Attended: ' +
+    document.getElementById('rsvp-count').innerHTML = 'Attended: ' +
       nextEvent.yes_rsvp_count;
   } else {
-    document.getElementById("rsvp-count").innerHTML = 'Attending: ' +
+    document.getElementById('rsvp-count').innerHTML = 'Attending: ' +
       nextEvent.yes_rsvp_count;
   }
 
   function getNextEvent() {
-    for (let event = 0; event < events.length; event++) {
-      if (events[event].status == "past") {
-        return events[event - 1]
+    for (var event = 0; event < events.length; event++) {
+      if (events[event].status == 'past') {
+        return events[event - 1];
       }
     }
   }
-}
+};
 
 getMeetups(signedUrl);
