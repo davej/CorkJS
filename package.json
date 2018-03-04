@@ -16,7 +16,7 @@
     "opensource"
   ],
   "author": "DaveJ",
-  "contributors": Dean Coakley, James Morrissey",
+  "contributors": "Dean Coakley, James Morrissey",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/davej/Corkjs/issues"
