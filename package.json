@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/davej/Corkjs/issues"
   },
+  "devDependencies": {
+    "eslint": "^4.18.2"
+  },
   "homepage": "https://github.com/davej/Corkjs#readme"
 }
