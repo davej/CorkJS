@@ -1,0 +1,30 @@
+{
+  "name": "corkjs",
+  "version": "1.0.0",
+  "description": "Displays information about CorkJs powered by meetup.com api",
+  "scripts": {
+    "test": "eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/davej/Corkjs.git"
+  },
+  "keywords": [
+    "javascript",
+    "css",
+    "opensource"
+  ],
+  "author": "DaveJ",
+  "contributors": "Dean Coakley, James Morrissey",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/davej/Corkjs/issues"
+  },
+  "devDependencies": {
+    "eslint": "^4.18.2"
+  },
+  "homepage": "https://github.com/davej/Corkjs#readme",
+  "dependencies": {
+    "npm": "^5.7.1"
+  }
+}
