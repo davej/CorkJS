@@ -1,6 +1,6 @@
 var signedUrl = 'https://api.meetup.com/cork-javascript-meetup/events?' +
-  'desc=true&photo-host=public&page=20&sig_id=210143296&callback=updateDOM&' +
-  'status=past%2Cupcoming&sig=4a36a805aac0c8de4199cb3008a95f9fa292ca9b';
+  'desc=true&photo-host=public&page=20&sig_id=210143296&status=past%2C' +
+  'upcoming&sig=4a36a805aac0c8de4199cb3008a95f9fa292ca9b&callback=updateDOM';
 var months = [
   'Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept',
   'Oct', 'Nov', 'Dec'
@@ -16,11 +16,12 @@ var getMeetups = function (url) {
   head.removeChild(script);
 };
 
-var updateDOM = function (responseJSON) {
+window.updateDOM = function (responseJSON) {
   var events = responseJSON.data;
 
   // Checks if no meetups were returned
   if (!(events && events.length > 0)) {
+    // eslint-disable-next-line no-console
     console.log('ERROR: No meetups returned from request.');
     return;
   }

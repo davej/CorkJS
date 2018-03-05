@@ -23,5 +23,8 @@
   "devDependencies": {
     "eslint": "^4.18.2"
   },
-  "homepage": "https://github.com/davej/Corkjs#readme"
+  "homepage": "https://github.com/davej/Corkjs#readme",
+  "dependencies": {
+    "npm": "^5.7.1"
+  }
 }
