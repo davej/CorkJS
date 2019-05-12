@@ -25,7 +25,7 @@ window.updateDOM = function(responseJSON) {
     console.log('ERROR: No meetups returned from request.');
     return;
   }
-  
+
   var nextEvent = getNextUpcomingEvent();
 
   // Checks if there are no upcoming events
@@ -37,7 +37,7 @@ window.updateDOM = function(responseJSON) {
     var eventData = document.querySelectorAll('h4, h5, p#latest-desc');
     eventData.forEach(function(data) {
       data.remove();
-    }); 
+    });
     return;
   }
 
