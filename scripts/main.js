@@ -7,7 +7,7 @@ var months = [
 ];
 var days = ['Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'];
 
-var getMeetups = function (url) {
+var getMeetups = function(url) {
   var head = document.head;
   var script = document.createElement('script');
 
@@ -16,7 +16,7 @@ var getMeetups = function (url) {
   head.removeChild(script);
 };
 
-window.updateDOM = function (responseJSON) {
+window.updateDOM = function(responseJSON) {
   var events = responseJSON.data;
 
   // Checks if no meetups were returned
@@ -25,7 +25,13 @@ window.updateDOM = function (responseJSON) {
     console.log('ERROR: No meetups returned from request.');
     return;
   }
-  var nextEvent = getNextEvent();
+
+  var nextEvent = getNextUpcomingEvent();
+
+  // Checks if there are no upcoming events
+  if (nextEvent == null) {
+    return;
+  }
 
   // Replace banner text
   if (nextEvent.status == 'past') {
@@ -75,12 +81,13 @@ window.updateDOM = function (responseJSON) {
       nextEvent.yes_rsvp_count;
   }
 
-  function getNextEvent() {
+  function getNextUpcomingEvent() {
     for (var event = 0; event < events.length; event++) {
       if (events[event].status == 'past') {
         return events[event - 1];
       }
     }
+    return null;
   }
 };
 
