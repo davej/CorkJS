@@ -25,11 +25,19 @@ window.updateDOM = function(responseJSON) {
     console.log('ERROR: No meetups returned from request.');
     return;
   }
-
+  
   var nextEvent = getNextUpcomingEvent();
 
   // Checks if there are no upcoming events
   if (nextEvent == null) {
+    var title = document.getElementById('latest-title');
+    title.classList.add('no-upcoming-events');
+    title.innerHTML = 'No Upcoming Event';
+
+    var eventData = document.querySelectorAll('h4, h5, p#latest-desc');
+    eventData.forEach(function(data) {
+      data.remove();
+    }); 
     return;
   }
 

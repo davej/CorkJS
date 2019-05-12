@@ -71,6 +71,10 @@ nav ul li a, .content a, .single-project a {
   padding: 1em 2em;
 }
 
+.no-upcoming-events {
+  text-align: center;
+}
+
 #user-projects {
   font-family: Montserrat;
 }
